@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let cantidadDinero=5;
+
+        do{
+            cantidadDinero=prompt("Dame una cantidad de dinero. (Recueda que debe ser multiplo de 5)");
+        }while(cantidadDinero%5 !== 0);
+
+
+        const billetes = [500, 200, 100, 50, 20, 10, 5];
+
+        // Iterar sobre los billetes para calcular el desglose
+        billetes.forEach(billete => {
+
+            let numeroBilletes = Math.floor(cantidadDinero / billete);
+
+            if (numeroBilletes > 0) {
+                alert("Número de billetes de " + billete + ": " + numeroBilletes);
+                cantidadDinero -= numeroBilletes * billete;
+            }
+        });
+    </script>
+
+    <!--Lo que va a hacer es un bucle for each, empezando por el billete mas caro. Si sobra cantidad se ira al siguiente e ira contando cuantos billetes caben-->
+    
+</body>
+</html>
