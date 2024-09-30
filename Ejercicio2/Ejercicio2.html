@@ -26,13 +26,17 @@
 
         if(sueldoNeto<=500){
             alert("Su sueldo es libre de impuestos y ha ganado "+sueldoNeto+" eur.");
+            
         }else if(sueldoNeto>500 && sueldoNeto<=900){
+
             let primeraParteSueldo=500;
             sueldoNeto-=500;
             sueldoNeto-=(sueldoNeto*25)/100;
             sueldoNeto+=primeraParteSueldo;
             alert("Su sueldo posee un 25% de impuestos a partir de los primeros 500 euros. Por lo tanto ha ganado "+sueldoNeto+" eur.");
+
         }else{
+
             let primeraParteSueldo=500;
             let ultimaParteSueldo=sueldoNeto-900;
             sueldoNeto-=500;
