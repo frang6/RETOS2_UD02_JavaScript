@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function calculoSalarioNeto(numHoras, precioHora){
+            let salarioNeto;
+
+            if(numHoras>35){
+                salarioNeto=(precioHora*numHoras)*1.5;
+            }else{
+                salarioNeto=(precioHora*numHoras);
+            }
+
+            return salarioNeto;
+        }
+
+        let precioHora=prompt("¿A cuanto cobras la hora?");
+        let numHoras=prompt("Introduce el numero de horas que has trabajado esta semana:");
+        
+        let sueldoNeto=calculoSalarioNeto(numHoras,precioHora);
+
+        if(sueldoNeto<=500){
+            alert("Su sueldo es libre de impuestos y ha ganado "+sueldoNeto+" eur.");
+        }else if(sueldoNeto>500 && sueldoNeto<=900){
+            let primeraParteSueldo=500;
+            sueldoNeto-=500;
+            sueldoNeto-=(sueldoNeto*25)/100;
+            sueldoNeto+=primeraParteSueldo;
+            alert("Su sueldo posee un 25% de impuestos a partir de los primeros 500 euros. Por lo tanto ha ganado "+sueldoNeto+" eur.");
+        }else{
+            let primeraParteSueldo=500;
+            let ultimaParteSueldo=sueldoNeto-900;
+            sueldoNeto-=500;
+            sueldoNeto-=(sueldoNeto*25)/100;
+           
+            ultimaParteSueldo-=(ultimaParteSueldo*45)/100;
+            sueldoNeto+=(primeraParteSueldo+ultimaParteSueldo)
+            alert("Su sueldo posee un 25% de impuestos a partir de los primeros 500 euros y un 45% a partir de los 900 euros. Por lo tanto ha ganado "+sueldoNeto+" eur.");
+        }
+
+
+
+    </script>
+    
+    
+</body>
+</html>

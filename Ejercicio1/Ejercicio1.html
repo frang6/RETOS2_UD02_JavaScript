@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function conteoCartas(carta){
+            let count=0;
+
+            let cartaAlta = ("J", "Q", "K", "A")
+
+            if (carta == 10 || carta==cartaAlta){
+                count--;
+            }else if (carta <7){
+                count++;
+            }
+
+            return count;
+        }
+
+        let numCartas=prompt("Introduce el numero de cartas conoces:");
+        let cartas=[numCartas];
+        let pideCarta;
+
+        for(let i=0; i<numCartas; i++){
+            pideCarta=prompt("Introduce el valor de la carta "+(i+1));
+            cartas[i]=pideCarta;
+        }
+
+        let conteo=0;
+
+        for(let i=0; i<numCartas; i++){
+            conteo+=conteoCartas(cartas[i]);
+        }
+
+        if(conteo>0){
+            alert("BET +"+conteo);
+        }else{
+            alert("HOLD "+conteo);
+        }
+
+
+
+    </script>
+    
+</body>
+</html>
