@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function Buscaminas(arrayBi) {
+
+        const filas = arrayBi.length;
+        const columnas = arrayBi[0].length;
+
+        // Crear una matriz de salida vacía con ceros
+        let solucion = [];
+        for (let i = 0; i < filas; i++) {
+            solucion[i] = [];
+            for (let j = 0; j < columnas; j++) {
+                solucion[i][j] = 0;  // Inicializamos cada posición en 0
+            }
+        }
+
+        // Recorrer cada posición del array original
+        for (let i = 0; i < filas; i++) {
+            for (let j = 0; j < columnas; j++) {
+                // Si encontramos una mina (valor -1), marcamos esa posición en la salida
+                if (arrayBi[i][j] === -1) {
+                    solucion[i][j] = -1;
+
+                    // Revisar todas las casillas alrededor de la mina
+                    for (let x = -1; x <= 1; x++) {
+                        for (let y = -1; y <= 1; y++) {
+                            let nuevaFila = i + x;
+                            let nuevaColumna = j + y;
+
+                            // Verificar si la nueva posición está dentro de los límites del array
+                            if (nuevaFila >= 0 && nuevaFila < filas && nuevaColumna >= 0 && nuevaColumna < columnas) {
+                                // Solo incrementamos si no es una mina
+                                if (arrayBi[nuevaFila][nuevaColumna] !== -1) {
+                                    solucion[nuevaFila][nuevaColumna] += 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return solucion;  
+    }
+
+        const array = [[0,0,-1,0,0],[0,-1,-1,0,0]];
+
+        document.write("Disponemos del siguiente campo de minas: <br>")
+
+        for(let i=0; i<array.length; i++){
+            // Convertir la fila actual en una cadena con valores separados por espacios
+            let fila = array[i].join(" ");
+            
+            // Escribir la fila en el documento
+            document.write(fila + "<br>");
+        }
+
+        const solucion = Buscaminas(array);
+
+        document.write("<br> Estas son las minas que tiene cerca cada posicion: <br>")
+
+        for(let i=0; i<solucion.length; i++){
+            // Convertir la fila actual en una cadena con valores separados por espacios
+            let fila = solucion[i].join(" ");
+            
+            // Escribir la fila en el documento
+            document.write(fila + "<br>");
+        }
+        
+
+
+
+
+    </script>
+    
+</body>
+</html>
